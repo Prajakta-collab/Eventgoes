@@ -21,5 +21,5 @@ app.use('/api/events', require('./routes/events'))
 
 
 app.listen(port, () => {
-  console.log(`iNotebook Backend listening at http://localhost:${port}`)
+  console.log(`Eventgo Backend listening at http://localhost:${port}`)
 })

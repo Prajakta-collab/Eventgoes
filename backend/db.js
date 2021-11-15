@@ -4,7 +4,7 @@ const mongooseURI = 'mongodb://localhost:27017/Eventgo?readPreference=primary&ap
 
 const connectToMongo = () => {
     mongoose.connect(mongooseURI , ()=>{
-        console.log("Connect to mangoose Successfully")
+        console.log("Connected to mongodb Successfully")
     })
 }
 

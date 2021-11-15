@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
+import Myevents from "./components/Myevents";
 import EventState from "./context/events/EventState";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -38,6 +39,9 @@ function App() {
               <Login showAlert={showAlert}/></Route>
               <Route exact path="/signup">
               <Signup showAlert={showAlert}/>
+            </Route>
+            <Route exact path="/myevents">
+              <Myevents showAlert={showAlert}/>
             </Route>
           </Switch>
         </Router>
