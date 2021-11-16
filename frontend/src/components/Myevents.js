@@ -2,7 +2,12 @@ import React,{useContext, useEffect, useRef, useState} from 'react'
 import { useHistory } from 'react-router';
 import eventContext from '../context/events/eventContext';
 import Eventitem from './Eventitem'
+import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
+
 const Myevents = () => {
+   const currentDate=new Date();
+  const startDate=currentDate.getDate();
+  // const minTime=currentDate.getHours()+":"+currentDate.getMinutes();
     const context=useContext(eventContext);
     const {events,getEvent,editEvent}=context;
 
@@ -103,40 +108,45 @@ const Myevents = () => {
               placeholder="Tag"
               onChange={onChange}
               value={event.etag}
-              minLength={5} required
+              minLength={5}
 
               
             />
           <div className="form-group my-2">
-            <label htmlFor="tag">Date</label>
-            <input
-              type="text"
-              className="form-control"
-              id="edate"
-              name="edate"
-              placeholder="Date"
-              onChange={onChange}
-              value={event.edate}
-              required
-              
-            />
+            <label htmlFor="date">Date</label>
+            <DatePickerComponent placeholder="Date"
+            id="edate"
+            name="edate"
+      value={event.edate}
+      min={startDate}
+      onChange={onChange}
+      format="dd-MMM-yy"
+      ></DatePickerComponent>
           </div>
           <div className="form-group my-2">
             <label htmlFor="tag">Time</label>
-            <input
+            {/* <TimePickerComponent placeholder="Select a time"
+      value={event.etime}
+      id="etime"
+      name="etime"
+      onChange={onChange}
+    
+     >
+
+      </TimePickerComponent> */}
+      <input
               type="text"
               className="form-control"
               id="etime"
               name="etime"
               placeholder="Time"
               onChange={onChange}
-              value={event.etime}
               required
-              
+              value={event.etime}
             />
           </div>
           <div className="form-group my-2">
-            <label htmlFor="tag">Venue</label>
+            <label htmlFor="venue">Venue</label>
             <input
               type="text"
               className="form-control"
@@ -164,7 +174,7 @@ const Myevents = () => {
         <div className="container row my-3 b "style={{ marginLeft:'5vw'}} >
            
           
-            <h2>Your Events :</h2>
+            <h2 style={{textAlign:'center'}}>Your Events </h2>
             {events.length===0 && 'no events to display'}
             {events.map((event)=>{
                    return <Eventitem key={event._id} updateEvent={updateEvent} event={event}/>
