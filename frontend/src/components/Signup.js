@@ -32,7 +32,7 @@ const Signup = (props) => {
                history.push('/');
                props.showAlert("Account created Successfully !","success");
                
-               
+              console.log(json)
   
            }
            else{
@@ -65,7 +65,7 @@ const Signup = (props) => {
   
             {/* <!-- Email input --> */}
             <div className="form-outline mb-4">
-            <input type="text" id="name" name="name"   onChange={onChange} class="form-control" />
+            <input type="text" id="email" name="email"   onChange={onChange} class="form-control" />
             <label class="form-label" for="form3Example3c">Your Email</label>
             </div>
   
@@ -78,7 +78,7 @@ const Signup = (props) => {
   
              {/* <!-- repeat Password input --> */}
              <div className="form-outline mb-3">
-             <input type="password" id="cpassword" name="cpassword" class="form-control" />
+             <input type="password" id="cpassword" name="cpassword" class="form-control" onChange={onChange}/>
                       <label class="form-label" for="form3Example4cd">Repeat your password</label>
             </div>
             <div class="form-check d-flex justify-content-center mb-5">

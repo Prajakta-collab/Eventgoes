@@ -1,7 +1,10 @@
 import React, { useContext, useState } from "react";
 import eventContext from "../context/events/eventContext";
+import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 
 const Addevent = () => {
+  const startDate=new Date(Date.now);
+
   const context = useContext(eventContext);
   const { addEvent } = context;
   const [event, setevent] = useState({
@@ -89,6 +92,15 @@ const Addevent = () => {
           </div>
           <div className="form-group my-2">
             <label htmlFor="date">Date</label>
+            {/* <DatePickerComponent placeholder=" Date"
+      value={event.date}
+      min={startDate}
+     
+      format="dd-MMM-yy"
+      // Uncomment below properties to show month picker. Note that, range restiction (min and max properties) should be removed for this case. 
+      // start="Year"
+      // depth="Year"
+      ></DatePickerComponent> */}
             <input
               type="text"
               className="form-control"
