@@ -32,7 +32,7 @@ const About = () => {
         </div> </div>
             </div>
             
-            <div style={{marginTop:'42rem'}} className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark">
+            <div style={{marginTop:'41.5rem'}} className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark">
         <div className="text-white mb-3 mb-md-0">
           Copyright © 2021. All rights reserved to Prajakta Badgujar.
         </div>
