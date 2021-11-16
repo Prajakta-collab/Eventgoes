@@ -1,17 +1,13 @@
-import React from 'react'
+import React from "react";
 
-
-import Addevent from './Addevent';
-
-
+import Addevent from "./Addevent";
 
 const Events = () => {
- 
-    
-    return (<>
-        <Addevent/>
- </>
-    )
-}
+  return (
+    <>
+      <Addevent />
+    </>
+  );
+};
 
-export default Events
+export default Events;

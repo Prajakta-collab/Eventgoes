@@ -4,7 +4,7 @@ const fetchuser = require('../middleware/fetchuser');
 const Events = require('../models/Events');
 const { body, validationResult } = require('express-validator');
 
-// ROUTE 1: Get All the Notes using: GET "/api/notes/getuser". Login required
+// ROUTE 1: Get All the events using: GET "/api/events/getuser". Login required
 router.get('/fetchallevents', fetchuser, async (req, res) => {
     try {
         const events = await Events.find({ user: req.user.id }).select("-user");
@@ -15,7 +15,7 @@ router.get('/fetchallevents', fetchuser, async (req, res) => {
     }
 })
 
-// ROUTE 2: Add a new Note using: POST "/api/notes/addnote". Login required
+// ROUTE 2: Add a new event using: POST "/api/events/addevent". Login required
 router.post('/addevent', fetchuser, [
     body('title', 'Enter a valid title').isLength({ min: 3 }),
     body('description', 'Description must be atleast 5 characters').isLength({ min: 5 }),], async (req, res) => {
@@ -41,13 +41,13 @@ router.post('/addevent', fetchuser, [
         }
 })
 
-// // ROUTE 3: Update a Existing Note using: PUT "/api/notes/updatenote". Login required
+// // ROUTE 3: Update a Existing event using: PUT "/api/events/updateevent". Login required
 
 router.put('/updateevent/:id', fetchuser , async (req, res) => {
         try {
             const { title, description, tag, date, time,venue} = req.body;
 
-        //new note object
+        //new event object
         const newEvent = {}
            if(title){newEvent.title = title}
            if(description){newEvent.description = description}
@@ -56,7 +56,7 @@ router.put('/updateevent/:id', fetchuser , async (req, res) => {
            if(time){newEvent.time=time}
            if(venue){newEvent.venue=venue}
 
-           //Find a note to be updated and update
+           //Find a event to be updated and update
            let event = await Events.findById(req.params.id);
            if(!event){ return res.status(404).send("Not Found")}
            
@@ -74,17 +74,17 @@ router.put('/updateevent/:id', fetchuser , async (req, res) => {
     })
 
 
-// // ROUTE 4: Delete a Existing Note using: DELETE "/api/notes//deletenode/:id". Login required
+// // ROUTE 4: Delete a Existing event using: DELETE "/api/events//deletenode/:id". Login required
 
 router.delete('/deleteevent/:id', fetchuser , async (req, res) => {
    try {
 
-    //Find a note to be updated and update
+    //Find a event to be updated and update
     let event = await Events.findById(req.params.id);
     if(!event){ return res.status(404).send("Not Found")}
     
 
-    // allow deletion only if the user owns this note
+    // allow deletion only if the user owns this event
     if(event.user.toString() != req.user.id){
         return res.status(401).send("Not Allowed")
     }

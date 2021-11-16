@@ -23,8 +23,8 @@ const EventsSchema = new Schema({
         
     },
     time:{
-        type: String,
-        default:Date.now
+        type: String
+        
     },
     venue:{
         type:String,
